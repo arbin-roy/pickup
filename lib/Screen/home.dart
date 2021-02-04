@@ -23,6 +23,11 @@ String div;
 
 class _HomeState extends State<Home> {
 
+  TextEditingController farmerphone = TextEditingController();
+  TextEditingController prod_name = TextEditingController();
+  TextEditingController prod_quantity = TextEditingController();
+  TextEditingController prod_price = TextEditingController();
+  TextEditingController div = TextEditingController();
   var url = "https://ehaat.herokuapp.com/pickupmanapi/pickOrder";
   Future fetchDetails() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -79,9 +84,7 @@ class _HomeState extends State<Home> {
               child: Column(
                 children: [
                   TextFormField(
-                    onChanged: (val) {
-                      phone = val;
-                    },
+                   controller: farmerphone,
                     decoration: InputDecoration(
                       labelText: 'Enter Farmer Phone Number',
                       border: OutlineInputBorder(),
@@ -89,9 +92,7 @@ class _HomeState extends State<Home> {
                     ),
                     SizedBox(height: 30,),
                   TextFormField(
-                    onChanged: (val) {
-                      prodName = val;
-                    },
+                    controller: prod_name,
                     decoration: InputDecoration(
                       labelText: 'Enter Product Name',               
                       border: OutlineInputBorder(),
@@ -99,9 +100,7 @@ class _HomeState extends State<Home> {
                     ),
                     SizedBox(height: 30,),
                   TextFormField(
-                    onChanged: (val) {
-                      prodPrice = val;
-                    },
+                    controller: prod_price,
                     decoration: InputDecoration(
                       
                       labelText: 'Enter Product Price per kg',              
@@ -110,9 +109,7 @@ class _HomeState extends State<Home> {
                     ),
                     SizedBox(height: 30,),
                   TextFormField(
-                    onChanged: (val) {
-                      prodQuantity = val;
-                    },
+                    controller: prod_quantity,
                     decoration: InputDecoration(
                       labelText: 'Enter Product Quantity',             
                         border: OutlineInputBorder(),
@@ -120,9 +117,7 @@ class _HomeState extends State<Home> {
                     ),
                     SizedBox(height: 30,),
                   TextFormField(
-                    onChanged: (val) {
-                      div = val;
-                    },
+                    controller: div,
                     decoration: InputDecoration(
                       labelText: 'Enter Division',              
                        border: OutlineInputBorder(),
@@ -185,6 +180,13 @@ class _HomeState extends State<Home> {
                 actions: [
                   TextButton(
                     onPressed: () {
+                      setState(() {
+                                              farmerphone.clear();
+                                              prod_name.clear();
+                                              prod_quantity.clear();
+                                              prod_price.clear();
+                                              div.clear();
+                                            });
                       Navigator.of(context).pop();
                     },
                     child: Text('OK'),

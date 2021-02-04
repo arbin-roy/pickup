@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         '/signup' : (BuildContext context) => SignUp(),
       },
 
-      home: id != null? SignIn() : Home(),
+      home: SignIn(),
     );
   }
 }
